@@ -1,0 +1,72 @@
+{{#section 'head'}}
+    <script type="text/javascript" src="javascripts/getNews.js"></script>
+{{/section}}
+
+<div class="page-content no-margin" ng-app="myApp" ng-controller="newsController">
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                {{#if status}}
+                    <h5 class="row-title before-purple margin-bottom-20">
+                        <a href="javascript:window.history.back()">新闻列表</a>　>
+                         {{data.title}}
+                    </h5>
+                    <div class="widget no-header">
+                        <div class="widget-body">
+                            <div class="title text-align-center">
+                                <h3>{{data.title}}</h3>
+                            </div>
+                            <hr class="wide">
+                            <div class="subtitle text-align-center">
+                                <small>作者：{{data.author}} | 时间：{{data.date}}</small>
+                            </div>
+                            <div class="subtitle text-align-center">
+                                <small>来源：{{data.source}} | 传送门：<a href="{{data.link}}" target="_blank">{{data.link}}</a></small>
+                            </div>
+                            <hr class="wide">
+                            <div class="mainBody padding-left-20 padding-right-20">
+                                <p style="line-height: 30px; text-indent: 2em; font-size: 16px;">{{data.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--评论部分-->
+                    <h5 class="row-title before-purple margin-bottom-20">
+                        评论
+                    </h5>
+                    <div ng-if='comments.status' class="widget" id="commentList">
+                        <div ng-repeat="comment in comments.data" class="widget radius-bordered">
+                            <div class="widget-header">
+                                <span class="widget-caption">
+                                    <strong>ByUser:</strong> \{{comment.user_id}}
+                                    <span class="margin-left-30 purple">\{{comment.create_time}}</span>
+                                </span>
+                            </div>
+                            <div class="widget-body padding-left-40">
+                                <p>\{{comment.comment}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget radius-bordered" id="publish">
+                        <div class="widget-header bg-purple">
+                            <span class="widget-caption">添加评论</span>
+                        </div>
+                        <div class="widget-body padding-bottom-50">
+                            <textarea disabled placeholder="添加评论请先登录" class="form-control" rows="5"></textarea>
+                            <button disabled="disabled" ng-click="publishComment('{{data.news_id}}')" id="publishComment" type="submit" class=" margin-top-10 pull-right btn btn-purple">Submit</button>
+                        </div>
+                    </div>
+                {{else}}
+                    <h1>Not Found</h1>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<input class="sr-only" id="hiddenData"  data-newsId="{{data.news_id}}" data-islogin="{{islogin}}" >
+
+{{#section 'jquery'}}
+
+{{/section}}

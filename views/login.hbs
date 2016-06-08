@@ -1,0 +1,31 @@
+
+<div class="login-container animated fadeInDown">
+    <!--%{--动态载入效果,animated fadeIn*--}%-->
+    <div class="loginbox bg-purple">
+        <!--%{--可选择的颜色背景--}%-->
+        <div class="loginbox-title white margin-bottom-40 padding-top-30">
+            SIGN IN
+        </div>
+
+        <div class="loginbox-textbox">
+            <input id="username" type="text" class="form-control" placeholder="Username">
+        </div>
+        <div class="loginbox-textbox">
+            <input id="password" type="password" class="form-control" placeholder="Password">
+        </div>
+
+        <div class="loginbox-submit">
+            <input id="submit" type="button" class="btn btn-default btn-block" value="Login">
+        </div>
+
+        <div id="result" class="loginbox-forgot white margin-top-10 sr-only">
+        </div>
+
+    </div>
+
+    <!--%{--这个放置logo--}%-->
+    <div class="logobox bg-purple"></div>
+</div>
+{{#section 'jquery'}}
+    <script type="text/javascript" src="javascripts/login.js"></script>
+{{/section}}

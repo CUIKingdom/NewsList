@@ -1,0 +1,92 @@
+
+<div class="page-content" ng-app="myApp" ng-controller="newsController">
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/admin/index" class="purple">新闻管理</a>
+            </li>
+            <li>
+                <a href="/admin/index" class="purple">新闻列表</a>
+            </li>
+            <li class="active">添加新闻</li>
+        </ul>
+    </div>
+
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-purple">
+                        <span class="widget-caption">添加新闻</span>
+                    </div>
+                    <div class="widget-body">
+                        <form id="newsForm" class="form-horizontal form-bordered" role="form">
+
+                            <input type="text" class="sr-only" name="news_id" id="news_id" value="">
+
+                            <div class="form-group">
+                                <label for="title" class="col-sm-2 control-label no-padding-right">Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="title" class="form-control" id="title" placeholder="title" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="author" class="col-sm-2 control-label no-padding-right">Author</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="author" class="form-control" id="author" placeholder="author" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date" class="col-sm-2 control-label no-padding-right">Date</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="date" class="form-control" id="date" placeholder="date" value="">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="source" class="col-sm-2 control-label no-padding-right">Source</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="source" class="form-control" id="source" placeholder="source"  value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="link" class="col-sm-2 control-label no-padding-right">Link</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="link" class="form-control" id="link" placeholder="link" value="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content" class="col-sm-2 control-label no-padding-right">Content</label>
+                                <div class="col-sm-10">
+                                    <textarea rows="20" placeholder="Content" name="content" class="form-control" style="font-size: medium" id="content"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group margin-bottom-20">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button ng-click="submitForm()" type="submit" class="btn btn-purple">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{#section 'jquery'}}
+    <script type="text/javascript" src="/javascripts/admin/index.js"></script>
+{{/section}}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#newsMenu").addClass("open");
+        $("#addNewsMenu").addClass("active");
+    });
+</script>

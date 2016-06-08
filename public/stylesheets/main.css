@@ -1,0 +1,25 @@
+.navbar-brand small{
+  display: block;
+  line-height: 38px;
+}
+.signIn a:hover{
+  color: gray;
+  text-shadow: 0 0 1px white;
+}
+.main-container{
+  min-height: 600px;
+}
+.loginbox, .logobox, .registerbox{
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.register-container .registerbox{
+  height: 300px !important;
+}
+.newList tr：{
+  word-break: break-all;
+}
+.newList tr:hover{
+  background-color: lightgrey !important;
+}

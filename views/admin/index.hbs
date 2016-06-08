@@ -1,0 +1,99 @@
+{{#section 'head'}}
+{{/section}}
+
+<div class="page-content" ng-app="myApp" ng-controller="mainController">
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/admin/index" class="purple">新闻管理</a>
+            </li>
+            <li class="active">新闻列表</li>
+        </ul>
+    </div>
+
+    <div class="page-body">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="widget with-footer">
+                    <div class="widget-header">
+                    <span class="widget-caption">
+                        新闻列表
+                    </span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="NoData sr-only padding-20 text-align-center">
+                            <span>暂无数据</span>
+                        </div>
+                        <div class="adminShow dataTables_wrapper form-inline no-footer">
+                            <table class="newList table table-hover table-striped table-bordered dataTable no-footer">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>标题</th>
+                                    <th>爬虫/添加日期</th>
+                                    <th>发布日期</th>
+                                    <th>作者</th>
+                                    <th>来源</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="news in news">
+                                    <td>\{{$index+1+(page-1)*(pageCount)}}</td>
+                                    <td><a href="javascript:void(0) " ng-click='showNews(news.news_id)'> \{{news.title}}</a></td>
+                                    <td>\{{news.crawlDate}}</td>
+                                    <td>\{{news.date}}</td>
+                                    <td>\{{news.author}}</td>
+                                    <td>\{{news.source}}</td>
+                                    <td>
+                                        <button class="btn btn-xs" type="button" ng-click='showNews(news.news_id)'>详情</button>
+                                        <button class="btn btn-xs" type="button" ng-click='editNews(news.news_id)'>编辑</button>
+                                        <button class="btn btn-xs" type="button" ng-click='deleteNews(news.news_id)'>删除</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="footer margin-top-30">
+                                <div class="row DTTTFooter">
+                                    <div class="col-sm-6">
+                                        <div class="dataTables_info" id="simpledatatable_info" role="status" aria-live="polite">
+                                            一共有\{{allCount}}条记录，每页显示\{{pageCount}}条记录，一共有\{{allPages}}页，当前是第\{{page}}页
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="dataTables_paginate paging_bootstrap pull-right" id="simpledatatable_paginate">
+                                            <ul class="pagination form-inline">
+                                                <li class="prev" >
+                                                    <a href="javascript:void (0)" id="prev" ng-click="changePage('prev', nowPage-1)">Prev</a>
+                                                </li>
+                                                <li class="active pull-left">
+                                                    <input id="nowPage" ng-model="nowPage" type="text" ng-keyup="changePage('num', nowPage, $event)" value="1" class="showPage form-control margin-left-10 margin-right-10 no-padding text-align-center" style="height: 32px;width:50px;">
+                                                </li>
+                                                <li class="next">
+                                                    <a href="javascript:void (0)" id="next" ng-click="changePage('next', nowPage+1)">Next</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#section 'jquery'}}
+    <script type="text/javascript" src="/javascripts/admin/index.js"></script>
+{{/section}}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#newsMenu").addClass("open");
+        $("#newsListMenu").addClass("active");
+    });
+</script>
